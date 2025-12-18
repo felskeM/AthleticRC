@@ -17,7 +17,7 @@ const thickness = [
 
 const gallery = [
   { src: "/images/arc06.webp", alt: "Gym flooring close-up with hands" },
-  { src: "/images/arc05.webp", alt: "Lunges on rubber flooring" },
+  { src: "/images/arc02.webp", alt: "Lunges on rubber flooring" },
   { src: "/images/arc03.webp", alt: "Mats in use at a gym" },
   { src: "/images/arc01.webp", alt: "Forklift and stored rubber rolls" },
 ];
@@ -48,7 +48,7 @@ export default function HomePage() {
         {/* background image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/arc02.webp"
+            src="/images/arc05.webp"
             alt="Rubber flooring in a gym setting"
             fill
             priority
@@ -140,19 +140,21 @@ export default function HomePage() {
             </div>
 
             <div className="card overflow-hidden">
-              <div className="relative aspect-[16/10] w-full">
-                <Image
-                  src="/images/arc04.webp"
-                  alt="Thickness guide chart"
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative w-full bg-white">
+                <div className="relative aspect-[16/10] w-full">
+                  <Image
+                    src="/images/arc04.webp"
+                    alt="Thickness guide chart"
+                    fill
+                    quality={100}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-contain p-6"
+                  />
+                </div>
               </div>
               <div className="border-t border-muted p-5">
                 <div className="text-sm font-semibold">Quick thickness guide</div>
-                <p className="mt-1 text-sm">
-                  Common options for home gyms through extreme commercial use.
-                </p>
+                  <p className="mt-1 text-sm">Common options for home gyms through extreme commercial use.</p>
               </div>
             </div>
           </div>
@@ -169,8 +171,8 @@ export default function HomePage() {
                 From gyms to warehouses — here’s what our rolled rubber looks like in the wild.
               </p>
             </div>
-            <Link href="/applications" className="hidden text-sm font-medium text-[color:var(--arc-blue)] sm:inline">
-              Explore applications →
+            <Link href="/products" className="hidden text-sm font-medium text-[color:var(--arc-blue)] sm:inline">
+              Explore products →
             </Link>
           </div>
 
