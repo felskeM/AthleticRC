@@ -10,16 +10,22 @@
   },
   "dependencies": {
     "next": "16.0.10",
+    "next-secure-headers": "^2.2.0",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "sharp": "^0.34.5",
+    "validator": "^13.15.26",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.10",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.0.10",
+    "eslint-plugin-security": "^3.0.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-config-tailwindcss": "^1.0.0",

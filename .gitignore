@@ -1,4 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
 
 # dependencies
 /node_modules
@@ -19,6 +23,8 @@
 
 # production
 /build
+.turbo
+.cache
 
 # misc
 .DS_Store
@@ -29,6 +35,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+logs/
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -39,3 +47,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Certificates
+*.crt
+*.key
+*.pem
