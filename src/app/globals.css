@@ -177,4 +177,12 @@ select {
   .arc-hero-subtitle {
     @apply mt-4 max-w-2xl text-base sm:text-lg;
   }
+
+  .arc-kicker {
+    @apply text-sm font-medium;
+    color: var(--muted-2);
+  }
+  .arc-h1 {
+    @apply mt-2 text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
 }

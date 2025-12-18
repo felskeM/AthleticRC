@@ -1,8 +1,14 @@
 export const site = {
   name: "Athletic Rubber Converting",
+  email: "customerservice@athleticrc.com",
   phone: "(414) 885-0051",
   phoneHref: "tel:4148850051",
   address: "2025 East Norse Avenue, Cudahy, WI 53110",
+  documents: {
+    installGuideHref: "/documents/install-guide.pdf",
+    warrantyHref: "/documents/warranty.pdf",
+    catalogHref: "/documents/catalog.pdf",
+  },
   nav: [
     { label: "Products", href: "/products" },
     { label: "Install, Specs & Warranty", href: "/install-specs-warranty" },
