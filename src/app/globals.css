@@ -1,7 +1,4 @@
-@reference "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* -----------------------------
    ARC Theme
@@ -16,23 +13,34 @@
   /* App semantics */
   --bg: #ffffff;
   --fg: var(--arc-ink);
-  --muted: var(--arc-gray);
-  --muted-2: var(--arc-slate);
+
+  --muted: color-mix(in oklab, var(--arc-ink) 55%, white);
+  --muted-2: color-mix(in oklab, var(--arc-ink) 35%, white);
 
   --card: #ffffff;
   --card-border: color-mix(in oklab, var(--arc-slate) 55%, white);
 
   --ring: color-mix(in oklab, var(--arc-blue) 65%, white);
-  --shadow: 0 10px 30px rgba(10, 7, 8, 0.08);
+
+  --shadow-sm: 0 6px 18px rgba(10, 7, 8, 0.06);
+  --shadow: 0 14px 40px rgba(10, 7, 8, 0.10);
+
+  --radius: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0d0c0c;
     --fg: #f4f4f5;
+
+    --muted: color-mix(in oklab, #f4f4f5 70%, #0d0c0c);
+    --muted-2: color-mix(in oklab, #f4f4f5 55%, #0d0c0c);
+
     --card: #111111;
-    --card-border: color-mix(in oklab, var(--arc-slate) 35%, black);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --card-border: color-mix(in oklab, var(--arc-slate) 30%, black);
+
+    --shadow-sm: 0 8px 22px rgba(0, 0, 0, 0.30);
+    --shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
   }
 }
 
@@ -49,9 +57,25 @@ body {
   color: var(--fg);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* subtle premium background glow (doesn't scream "template") */
+  background-image:
+    radial-gradient(900px 450px at 18% 12%, color-mix(in oklab, var(--arc-blue) 12%, transparent), transparent 65%),
+    radial-gradient(700px 380px at 85% 20%, color-mix(in oklab, var(--arc-slate) 18%, transparent), transparent 60%);
+  background-attachment: fixed;
 }
 
-/* Default selection */
+
+/* Better default type rhythm */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+p {
+  color: var(--muted);
+}
+
+/* Selection */
 ::selection {
   background: color-mix(in oklab, var(--arc-blue) 25%, white);
 }
@@ -68,8 +92,8 @@ a:hover {
 /* Focus ring */
 :where(a, button, input, textarea, select):focus-visible {
   outline: 2px solid var(--ring);
-  outline-offset: 2px;
-  border-radius: 0.5rem;
+  outline-offset: 3px;
+  border-radius: 0.75rem;
 }
 
 /* Inputs */
@@ -84,42 +108,73 @@ select {
    Utility classes
 ------------------------------ */
 @layer components {
-  .container {
-    @apply mx-auto max-w-6xl px-4;
+  .arc-container {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .arc-section {
+    @apply py-14 sm:py-20;
   }
 
   .card {
     background: var(--card);
     border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-sm);
+    border-radius: calc(var(--radius) + 0.25rem);
+    @apply transition;
+  }
+  .card:hover {
     box-shadow: var(--shadow);
-    @apply rounded-2xl;
+    transform: translateY(-1px);
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition;
+  }
+  .btn:active {
+    transform: translateY(1px);
   }
 
   .btn-primary {
-    background: var(--arc-blue);
     color: white;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--arc-blue) 92%, white),
+      color-mix(in oklab, var(--arc-blue) 78%, var(--arc-ink))
+    );
+    box-shadow: 0 10px 22px rgba(30, 62, 142, 0.20);
   }
   .btn-primary:hover {
-    background: color-mix(in oklab, var(--arc-blue) 88%, var(--arc-ink));
+    filter: brightness(1.02);
   }
 
   .btn-outline {
     border: 1px solid var(--card-border);
-    @apply bg-transparent;
+    background: color-mix(in oklab, var(--card) 88%, transparent);
+    @apply backdrop-blur;
   }
   .btn-outline:hover {
-    background: color-mix(in oklab, var(--arc-slate) 18%, white);
+    background: color-mix(in oklab, var(--arc-slate) 14%, white);
   }
 
   .muted {
     color: var(--muted);
   }
 
+  .muted-2 {
+    color: var(--muted-2);
+  }
+
   .border-muted {
     border-color: var(--card-border);
+  }
+
+  /* Nice headline style for hero text */
+  .arc-hero-title {
+    @apply text-4xl font-semibold leading-tight sm:text-5xl;
+  }
+
+  .arc-hero-subtitle {
+    @apply mt-4 max-w-2xl text-base sm:text-lg;
   }
 }
