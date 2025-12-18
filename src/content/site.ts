@@ -5,7 +5,6 @@ export const site = {
   address: "2025 East Norse Avenue, Cudahy, WI 53110",
   nav: [
     { label: "Products", href: "/products" },
-    { label: "Applications", href: "/applications" },
     { label: "Install, Specs & Warranty", href: "/install-specs-warranty" },
     { label: "Contact", href: "/contact" },
   ],
